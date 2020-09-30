@@ -66,4 +66,3 @@ class FibonacciHeap(Heap):
         Fusionne deux arbres
         """
         pass
-
