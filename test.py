@@ -1,4 +1,4 @@
-import math
+
  
 class FibonacciTree:
     def __init__(self, key):
@@ -43,33 +43,33 @@ class FibonacciHeap:
             self.count = self.count - 1
             return smallest.key
  
-    def consolidate(self):
-        aux = (floor_log2(self.count) + 1)*[None]
+#     def consolidate(self):
+#         aux = (floor_log2(self.count) + 1)*[None]
  
-        while self.trees != []:
-            x = self.trees[0]
-            order = x.order
-            self.trees.remove(x)
-            while aux[order] is not None:
-                y = aux[order]
-                if x.key > y.key:
-                    x, y = y, x
-                x.add_at_end(y)
-                aux[order] = None
-                order = order + 1
-            aux[order] = x
+#         while self.trees != []:
+#             x = self.trees[0]
+#             order = x.order
+#             self.trees.remove(x)
+#             while aux[order] is not None:
+#                 y = aux[order]
+#                 if x.key > y.key:
+#                     x, y = y, x
+#                 x.add_at_end(y)
+#                 aux[order] = None
+#                 order = order + 1
+#             aux[order] = x
  
-        self.least = None
-        for k in aux:
-            if k is not None:
-                self.trees.append(k)
-                if (self.least is None
-                    or k.key < self.least.key):
-                    self.least = k
+#         self.least = None
+#         for k in aux:
+#             if k is not None:
+#                 self.trees.append(k)
+#                 if (self.least is None
+#                     or k.key < self.least.key):
+#                     self.least = k
  
  
-def floor_log2(x):
-    return math.frexp(x)[1] - 1
+# def floor_log2(x):
+#     return math.frexp(x)[1] - 1
  
  
 fheap = FibonacciHeap()
@@ -96,3 +96,5 @@ while True:
  
     elif operation == 'quit':
         break
+
+    
