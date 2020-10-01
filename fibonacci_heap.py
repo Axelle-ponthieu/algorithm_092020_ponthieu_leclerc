@@ -34,7 +34,6 @@ class Node:
 
 class FibonacciHeap(Heap):
 
-    heap2 = [2, 4, 5, 6]
 
     def __init__(self):
         self.heap = []
@@ -63,6 +62,8 @@ class FibonacciHeap(Heap):
         for value in heap2:
             self.heap.append(value)
 
+
+
 #pour tester le merge 
 
 heap = FibonacciHeap()
@@ -73,5 +74,7 @@ heap2.insert(0)
 
 heap.merge(heap2)
 
+
+print(heap)
 
 # faire une boucle insert sur la liste heap2 vers heap, avant il faut definir heap et heap2
