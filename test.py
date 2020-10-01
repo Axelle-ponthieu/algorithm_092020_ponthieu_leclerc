@@ -1,8 +1,8 @@
 
  
-class FibonacciTree:
-    def __init__(self, key):
-        self.key = key
+class Node:
+    def __init__(self, value):
+        self.value = value
         self.children = []
         self.order = 0
  
@@ -14,31 +14,31 @@ class FibonacciTree:
 class FibonacciHeap:
     def __init__(self):
         self.trees = []
-        self.least = None
+        self.mini = None
         self.count = 0
  
-    def insert(self, key):
-        new_tree = FibonacciTree(key)
-        self.trees.append(new_tree)
-        if (self.least is None or key < self.least.key):
-            self.least = new_tree
+    def insert(self, value):
+        new_node = Node(value)
+        self.trees.append(new_node)
+        if (self.mini is None or value < self.mini.value):
+            self.mini = new_node
         self.count = self.count + 1
  
-    def get_min(self):
-        if self.least is None:
+    def find_min(self):
+        if self.mini is None:
             return None
-        return self.least.key
+        return self.mini.value
  
-    def extract_min(self):
-        smallest = self.least
+    def delete_min(self):
+        smallest = self.mini
         if smallest is not None:
             for child in smallest.children:
                 self.trees.append(child)
             self.trees.remove(smallest)
             if self.trees == []:
-                self.least = None
+                self.mini = None
             else:
-                self.least = self.trees[0]
+                self.mini = self.trees[0]
                 self.consolidate()
             self.count = self.count - 1
             return smallest.key
@@ -90,9 +90,9 @@ while True:
     elif operation == 'min':
         suboperation = do[1].strip().lower()
         if suboperation == 'get':
-            print('Minimum value: {}'.format(fheap.get_min()))
+            print('Minimum value: {}'.format(fheap.find_min()))
         elif suboperation == 'extract':
-            print('Minimum value removed: {}'.format(fheap.extract_min()))
+            print('Minimum value removed: {}'.format(fheap.delete_min()))
  
     elif operation == 'quit':
         break
