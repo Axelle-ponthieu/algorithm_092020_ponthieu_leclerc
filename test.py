@@ -13,13 +13,13 @@ class Node:
  
 class FibonacciHeap:
     def __init__(self):
-        self.trees = []
+        self.heap = []
         self.mini = None
         self.count = 0
  
     def insert(self, value):
         new_node = Node(value)
-        self.trees.append(new_node)
+        self.heap.append(new_node)
         if (self.mini is None or value < self.mini.value):
             self.mini = new_node
         self.count = self.count + 1
@@ -31,14 +31,14 @@ class FibonacciHeap:
  
     def delete_min(self):
         smallest = self.mini
-        if smallest is not None:
+        if smallest != None:
             for child in smallest.children:
-                self.trees.append(child)
-            self.trees.remove(smallest)
-            if self.trees == []:
+                self.heap.append(child)
+            self.heap.remove(smallest)
+            if self.heap == []:
                 self.mini = None
             else:
-                self.mini = self.trees[0]
+                self.mini = self.heap[0]
                 self.consolidate()
             self.count = self.count - 1
             return smallest.key
